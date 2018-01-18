@@ -24,14 +24,6 @@ export default Ember.Component.extend({
       VMasker(this.$().find('input')).maskPattern(this.get('mask'));
       this.set('placeholder', this.get('mask'))
     }
-  },
-
-  actions: {
-
-    clearErrors() {
-      this.get('model.errors').clear(this.get('attr'));
-    }
-
   }
 
 });

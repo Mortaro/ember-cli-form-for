@@ -39,7 +39,6 @@ export default Ember.Component.extend({
       var amount = parseFloat(this.get('value').replace(/\./g, '').replace(',','.'));
       Ember.set(this.get('model'), this.get('attr'), amount);
       this.sendAction('onchange');
-      this.get('model.errors').clear(this.get('attr'));
     }
 
   },

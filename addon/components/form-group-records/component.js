@@ -60,10 +60,6 @@ export default Ember.Component.extend({
         selected.pushObject(id);
       }
       Ember.set(this.get('model'), this.get('attr'), selected);
-    },
-
-    clearErrors() {
-      this.get('model.errors').clear(this.get('attr'));
     }
 
   }

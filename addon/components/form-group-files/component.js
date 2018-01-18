@@ -59,7 +59,6 @@ export default Ember.Component.extend({
     });
     Ember.set(this.get('model'), this.get('attr'), links);
     this.sendAction('onchange');
-    this.get('model.errors').clear(this.get('attr'));
   }),
 
   toObject(link) {
