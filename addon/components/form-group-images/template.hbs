@@ -20,10 +20,10 @@
       {{#each attachments as |attachment|}}
         <tr>
           <td>
-            <a href={{attachment.link}} target="_blank">
-              <i class="glyphicon glyphicon-paperclip"></i>
-              {{attachment.fileName}}
-            </a>
+            {{attachment.fileName}}
+            <div class="thumb" style="background-image: url({{attachment.link}})">
+              <a href={{attachment.link}} target="_blank"></a>
+            </div>
           </td>
           <td class="table-actions">
             <button class="btn btn-secondary btn-xs" {{action 'removeAttachment' attachment}}>
