@@ -1,0 +1,42 @@
+<div class="form-group">
+  <label>
+    {{label}}
+    {{#if required}}
+      <abbr>*</abbr>
+    {{/if}}
+  </label>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" multiple="true" onchange={{action "changeFileInput"}}>
+    <label class="custom-file-label" for="customFile">
+      {{#if uploadQueue}}
+        <i class="fa fa-spinner fa-pulse"></i>
+      {{else}}
+        Escolher Arquivos
+      {{/if}}
+    </label>
+  </div>
+  <table class="table table-bordered attachment {{if (eq attachments.length 0) 'empty'}}">
+    <tbody>
+      {{#each attachments as |attachment|}}
+        <tr>
+          <td>
+            <a href={{attachment.link}} target="_blank">
+              <i class="glyphicon glyphicon-paperclip"></i>
+              {{attachment.fileName}}
+            </a>
+          </td>
+          <td class="table-actions">
+            <button class="btn btn-secondary btn-xs" {{action 'removeAttachment' attachment}}>
+              <i class='fa fa-trash-o'></i>
+            </button>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{#if error}}
+    <div class="invalid-feedback">
+      {{error}}
+    </div>
+  {{/if}}
+</div>

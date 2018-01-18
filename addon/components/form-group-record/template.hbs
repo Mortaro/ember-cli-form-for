@@ -1,0 +1,40 @@
+<div class="form-group">
+  <label>
+    {{label}}
+    {{#if required}}
+      <abbr>*</abbr>
+    {{/if}}
+  </label>
+  <div class="form-control {{if error 'is-invalid'}}">
+    {{#power-select-with-create
+      options=options
+      search=(action "search")
+      allowClear=true
+      loadingMessage="Buscando..."
+      disabled=disabled
+      placeholder=label
+      searchPlaceholder="Digite para buscar"
+      noMatchesMessage="Nenhum resultado encontrado"
+      showCreatePosition='bottom'
+      searchField=optionLabel
+      selected=(get model attr)
+      onchange=(action 'setValue')
+      buildSuggestion=(action "buildSuggestion")
+      oncreate=(action "createOption")
+      renderInPlace=true
+      closeOnSelect=true
+      showCreateWhen=(action "showCreateWhen") as |option term|
+    }}
+      {{#if optionLabel}}
+        {{get option optionLabel}}
+      {{else}}
+        {{option}}
+      {{/if}}
+    {{/power-select-with-create}}
+  </div>
+  {{#if error}}
+    <div class="invalid-feedback">
+      {{error}}
+    </div>
+  {{/if}}
+</div>

@@ -1,0 +1,20 @@
+<div class="form-group">
+  <label>
+    {{label}}
+    {{#if required}}
+      <abbr>*</abbr>
+    {{/if}}
+  </label>
+  <div class="form-control {{if error 'is-invalid'}}">
+    {{#if (get model attr)}}
+      {{ember-flatpickr date=(readonly (get model attr)) onChange=(action 'setValue') dateFormat='d/m/Y' altInput=true}}
+    {{else}}
+      {{ember-flatpickr date=null onChange=(action 'setValue') dateFormat='d/m/Y' altInput=true}}
+    {{/if}}
+  </div>
+  {{#if error}}
+    <div class="invalid-feedback">
+      {{error}}
+    </div>
+  {{/if}}
+</div>

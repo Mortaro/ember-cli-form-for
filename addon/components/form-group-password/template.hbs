@@ -1,0 +1,20 @@
+<div class="form-group">
+  <label>
+    {{label}}
+    {{#if required}}
+      <abbr>*</abbr>
+    {{/if}}
+  </label>
+  {{input
+    type="password"
+    value=(get model attr)
+    class=(concat "form-control " (if error 'is-invalid'))
+    key-up=(action 'clearErrors')
+    disabled=disabled
+  }}
+  {{#if error}}
+    <div class="invalid-feedback">
+      {{error}}
+    </div>
+  {{/if}}
+</div>

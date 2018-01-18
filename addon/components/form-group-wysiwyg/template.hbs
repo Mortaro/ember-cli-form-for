@@ -1,0 +1,16 @@
+<div class="form-group">
+  <label>
+    {{label}}
+    {{#if required}}
+      <abbr>*</abbr>
+    {{/if}}
+  </label>
+  <div class="form-control {{if error 'is-invalid'}}">
+    {{pell-editor value=(get model attr) onChange=(action 'setValue') pellOptions=options}}
+  </div>
+  {{#if error}}
+    <div class="invalid-feedback">
+      {{error}}
+    </div>
+  {{/if}}
+</div>
