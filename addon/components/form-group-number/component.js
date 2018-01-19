@@ -20,14 +20,6 @@ export default Ember.Component.extend({
       let message = this.get(`model.errors.${this.get('attr')}.firstObject.message`);
       this.set('error', message);
     });
-  },
-
-  actions: {
-
-    clearErrors() {
-      this.get('model.errors').clear(this.get('attr'));
-    }
-
   }
 
 });

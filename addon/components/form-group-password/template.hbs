@@ -9,7 +9,6 @@
     type="password"
     value=(get model attr)
     class=(concat "form-control " (if error 'is-invalid'))
-    key-up=(action 'clearErrors')
     disabled=disabled
   }}
   {{#if error}}

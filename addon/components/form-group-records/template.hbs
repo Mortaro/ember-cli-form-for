@@ -1,0 +1,22 @@
+<div class="form-group">
+  <label>
+    {{label}}
+    {{#if required}}
+      <abbr>*</abbr>
+    {{/if}}
+  </label>
+  {{#each options as |option|}}
+    {{form-group-toggle
+      class="pl-0"
+      model=this
+      attr=(concat "checkboxes." option.id)
+      label=(get option optionLabel)
+      onchange=(action 'toggleRecord')
+    }}
+  {{/each}}
+  {{#if error}}
+    <div class="invalid-feedback">
+      {{error}}
+    </div>
+  {{/if}}
+</div>

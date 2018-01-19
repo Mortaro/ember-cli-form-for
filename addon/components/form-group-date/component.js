@@ -27,7 +27,6 @@ export default Ember.Component.extend({
 
     setValue(value) {
       Ember.set(this.get('model'), this.get('attr'), value[0]);
-      this.get('model.errors').clear(this.get('attr'));
       this.sendAction('onchange');
     }
 
