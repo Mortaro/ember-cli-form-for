@@ -1,0 +1,36 @@
+<div class="form-group">
+  <label>
+    {{label}}
+    {{#if required}}
+      <abbr>*</abbr>
+    {{/if}}
+  </label>
+  {{#each phones as |phone|}}
+    <div class="row">
+      <div class="col-md-{{if whatsapp '9' '12'}}">
+        {{input type="tel" value=phone.number class="form-control" key-up=(action 'changeMask')}}
+      </div>
+      {{#if whatsapp}}
+        <div class="col-md-3">
+          {{form-group-toggle
+            class="pl-0"
+            model=phone
+            attr="is_whatsapp"
+            label="WhatsApp?"
+          }}
+        </div>
+      {{/if}}
+    </div>
+    {{#if (gte phones.length 2)}}
+      <button class="btn btn-outline-danger" {{action 'destroyPhone' phone}}>Excluir</button>
+    {{/if}}
+  {{/each}}
+  {{#if error}}
+    <div class="invalid-feedback">
+      {{error}}
+    </div>
+  {{/if}}
+  <div class="col-md-12">
+    <button {{action 'addPhone'}} class="btn btn-link"> Adicionar Telefone </button>
+  </div>
+</div>
