@@ -6,7 +6,7 @@
     {{/if}}
   </label>
   <div class="form-control {{if error 'is-invalid'}}">
-    {{pell-editor value=(get model attr) onChange=(action 'setValue') pellOptions=options}}
+    {{pell-editor value=(get model attr) onChange=(action 'setValue') pellOptions=options disabled=disabled}}
   </div>
   {{#if error}}
     <div class="invalid-feedback">
