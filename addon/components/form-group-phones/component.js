@@ -49,12 +49,11 @@ export default Ember.Component.extend({
     changeMask(e) {
       this.$('input').each(function() {
         let value = $(this).val().replace(/\D/g, '')
-        var number1 = value.charAt(2);
-        var number2 = value.charAt(3);
+        var number = value.charAt(2);
         if(value[0] == '0') {
           VMasker($(this)).unMask();
           VMasker($(this)).maskPattern('9999 999 9999');
-        } else if(number1 == 9 && number2 == 9) {
+        } else if(number == 9) {
           VMasker($(this)).unMask();
           VMasker($(this)).maskPattern('(99) 99999-9999');
         } else {
