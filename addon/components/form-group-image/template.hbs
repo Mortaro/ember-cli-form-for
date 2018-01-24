@@ -1,0 +1,45 @@
+<div class="form-group">
+  <label>
+    {{label}}
+    {{#if required}}
+      <abbr>*</abbr>
+    {{/if}}
+  </label>
+  {{#unless disabled}}
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" onchange={{action "changeFileInput"}}>
+      <label class="custom-file-label" for="customFile">
+        {{#if uploadQueue}}
+          <i class="fa fa-spinner fa-pulse"></i>
+        {{else}}
+          Escolher Imagens
+        {{/if}}
+      </label>
+    </div>
+  {{/unless}}
+  {{#if (get model attr)}}
+    <table class="table table-bordered attachment">
+      <tbody>
+          <tr>
+            <td>
+              <div class="thumb" style="background-image: url({{get model attr}})">
+                <a href="{{get model attr}}" target="_blank"></a>
+              </div>
+            </td>
+            {{#unless disabled}}
+              <td class="table-actions">
+                <button class="btn btn-secondary btn-xs" {{action 'clear'}}>
+                  <i class='fa fa-trash-o'></i>
+                </button>
+              </td>
+            {{/unless}}
+          </tr>
+      </tbody>
+    </table>
+  {{/if}}
+  {{#if error}}
+    <div class="invalid-feedback">
+      {{error}}
+    </div>
+  {{/if}}
+</div>
