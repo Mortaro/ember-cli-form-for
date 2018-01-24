@@ -5,13 +5,7 @@
       <abbr>*</abbr>
     {{/if}}
   </label>
-  <div class="form-control {{if error 'is-invalid'}}">
-    {{#if (get model attr)}}
-      {{pikaday-input value=(readonly (get model attr)) onSelection=(action 'setValue') format="DD/MM/YYYY" class="form-control" useUTC=true disabled=disabled}}
-    {{else}}
-      {{pikaday-input value=null onSelection=(action 'setValue') format="DD/MM/YYYY" class="form-control" useUTC=true disabled=disabled}}
-    {{/if}}
-  </div>
+  {{pikaday-input class=(if error 'is-invalid') value=(readonly (get model attr)) onSelection=(action 'setValue') format="DD/MM/YYYY" class="form-control" useUTC=true disabled=disabled}}
   {{#if error}}
     <div class="invalid-feedback">
       {{error}}

@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   layout,
 
   tagName: 'form',
-  classNames: ['row'],
+  classNames: ['row', 'form-for'],
 
   actions: {
 
