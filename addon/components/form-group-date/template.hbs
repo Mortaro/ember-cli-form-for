@@ -7,9 +7,9 @@
   </label>
   <div class="form-control {{if error 'is-invalid'}}">
     {{#if (get model attr)}}
-      {{ember-flatpickr date=(readonly (get model attr)) onChange=(action 'setValue') dateFormat='d/m/Y' altInput=true disabled=disabled}}
+      {{pikaday-input value=(readonly (get model attr)) onSelection=(action 'setValue') format="DD/MM/YYYY" class="form-control" useUTC=true disabled=disabled}}
     {{else}}
-      {{ember-flatpickr date=null onChange=(action 'setValue') dateFormat='d/m/Y' altInput=true disabled=disabled}}
+      {{pikaday-input value=null onSelection=(action 'setValue') format="DD/MM/YYYY" class="form-control" useUTC=true disabled=disabled}}
     {{/if}}
   </div>
   {{#if error}}

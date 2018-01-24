@@ -6,7 +6,19 @@
     {{/if}}
   </label>
   <div class="form-control {{if error 'is-invalid'}}">
-    {{pell-editor value=(get model attr) onChange=(action 'setValue') pellOptions=options disabled=disabled}}
+    {{summernote-editor
+      focus=false
+      btnSize=bs-sm
+      airMode=false
+      height=200
+      buttons=buttons
+      toolbar=toolbar
+      disabled=disabled
+      callbacks=callbacks
+      content=(get model attr)
+      onContentChange=(action 'setValue')
+    }}
+    <!--{ {pell-editor value=(get model attr) onChange=(action 'setValue') pellOptions=options disabled=disabled}}-->
   </div>
   {{#if error}}
     <div class="invalid-feedback">
