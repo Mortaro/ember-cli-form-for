@@ -8,6 +8,7 @@ module.exports = {
   included: function(app) {
     this._super.included.apply(this, arguments);
     this.import('vendor/vanilla-masker.js');
+    this.import('vendor/form-for.css');
   },
 
   isDevelopingAddon() {
