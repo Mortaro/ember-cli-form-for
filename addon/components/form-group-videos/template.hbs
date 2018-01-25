@@ -1,1 +1,26 @@
-{{yield}}
+<div class="form-group">
+  <label>
+    {{label}}
+    {{#if required}}
+      <abbr>*</abbr>
+    {{/if}}
+  </label>
+  {{#each videos as |video|}}
+    <div class="row">
+      <div class="col-md-12">
+        {{input value=video.url class="form-control" placeholder="Url do Vídeo"}}
+      </div>
+    </div>
+    {{#if (gte videos.length 2)}}
+      <button class="btn btn-outline-danger" {{action 'destroyVideo' video}}>Excluir</button>
+    {{/if}}
+  {{/each}}
+  {{#if error}}
+    <div class="invalid-feedback">
+      {{error}}
+    </div>
+  {{/if}}
+  <div class="col-md-12">
+    <button {{action 'addVideo'}} class="btn btn-link"> Adicionar Telefone </button>
+  </div>
+</div>

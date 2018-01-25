@@ -39,6 +39,14 @@
       {{/each}}
     </select>
   </div>
+  {{#if latlong}}
+    <div class="col-md-12">
+      {{input value=(get (get model attr) "latitude") class="form-control" placeholder="Latitude"}}
+    </div>
+    <div class="col-md-12">
+      {{input value=(get (get model attr) "longitude") class="form-control" placeholder="Longitude"}}
+    </div>
+  {{/if}}
   {{#if error}}
     <div class="invalid-feedback">
       {{error}}

@@ -24,17 +24,6 @@ export default Ember.Component.extend({
     if(Ember.isEmpty(address)) {
       Ember.set(this.get('model'), this.get('attr'), {});
     }
-    /*this.set('street', fragments[0]);
-    let number = (fragments[1] || '').replace('Nº ', '').split(' ')[0];
-    this.set('number', number);
-    let complement = ((fragments[1] || '').replace('Nº ', '').split(/\ (.+)/)[1]) || '';
-    this.set('complement', complement);
-    let neighborhood = (fragments[2] || '').replace('bairro ', '');
-    this.set('neighborhood', neighborhood);
-    this.set('city', fragments[3]);
-    this.set('uf', fragments[4]);
-    let cep = (fragments[5] || '').replace('CEP ', '');
-    this.set('cep', cep);*/
   },
 
   didInsertElement() {
@@ -56,7 +45,6 @@ export default Ember.Component.extend({
             Ember.set(address, 'neighborhood', dados.bairro);
             Ember.set(address, 'city', dados.localidade);
             Ember.set(address, 'uf', dados.uf);
-            console.log(address);
           }
         });
       }
