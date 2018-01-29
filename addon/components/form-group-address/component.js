@@ -31,6 +31,7 @@ export default Ember.Component.extend({
       let message = this.get(`model.errors.${this.get('attr')}.firstObject.message`);
       this.set('error', message);
     });
+    VMasker(this.$().find('input:first')).maskPattern('99999-999');
   },
 
   actions: {

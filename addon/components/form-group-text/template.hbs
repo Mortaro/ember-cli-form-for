@@ -10,7 +10,7 @@
     class=(concat "form-control " (if error 'is-invalid'))
     focus-out=onchange
     disabled=disabled
-    placeholder=mask
+    placeholder=(if placeholder placeholder mask)
   }}
   {{#if error}}
     <div class="invalid-feedback">
