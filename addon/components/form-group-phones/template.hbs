@@ -8,15 +8,16 @@
   {{#each phones as |phone|}}
     <div class="row">
       <div class="col-md-{{if whatsapp '9' '12'}}">
-        {{input type="tel" value=phone.number class="form-control" key-up=(action 'changeMask')}}
+        {{input type="tel" value=phone.number focus-out=(action 'serialize') class="form-control" key-up=(action 'changeMask')}}
       </div>
       {{#if whatsapp}}
         <div class="col-md-3">
           {{form-group-toggle
             class="pl-0"
             model=phone
-            attr="is_whatsapp"
+            attr="whatsapp"
             label="WhatsApp?"
+            onchange=(action 'serialize')
           }}
         </div>
       {{/if}}

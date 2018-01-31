@@ -26,7 +26,7 @@ export default Ember.Component.extend({
     let value = Ember.get(this.get('model'), this.get('attr'));
     let phones = (value || []);
     if(phones.length == 0) {
-      phones.pushObject({number: "", is_whatsapp: false});
+      phones.pushObject({number: "", whatsapp: false});
     }
     this.set('phones', phones);
   },
@@ -36,14 +36,27 @@ export default Ember.Component.extend({
     this.bootstrap();
   },
 
+  serialize() {
+    let value = this.get('phones');
+    console.log(value);
+    Ember.set(this.get('model'), this.get('attr'), value);
+    this.sendAction('onchange', this.get('model'), this.get('attr'), value);
+  },
+
   actions: {
 
+    serialize() {
+      this.serialize();
+    },
+
     addPhone() {
-      this.get('phones').pushObject({number: "", is_whatsapp: false});
+      this.get('phones').pushObject({number: "", whatsapp: false});
+      this.serialize();
     },
 
     destroyPhone(phone) {
       this.get('phones').removeObject(phone);
+      this.serialize();
     },
 
     changeMask(e) {

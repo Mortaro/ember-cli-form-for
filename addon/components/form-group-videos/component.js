@@ -22,21 +22,31 @@ export default Ember.Component.extend({
     });
   },
 
-  bootstrap() {
+  init() {
+    this._super(...arguments);
     let value = Ember.get(this.get('model'), this.get('attr'));
-    let videos = (value || []);
+    let videos = (value || []).map((v) => {
+      return {value: v};
+    });
     if(videos.length == 0) {
-      videos.pushObject({url: ""});
+      videos.pushObject({value: ""});
     }
     this.set('videos', videos);
   },
 
-  init() {
-    this._super(...arguments);
-    this.bootstrap();
+  serialize() {
+    let value = this.get('videos').map((t) => {
+      return t.value;
+    });
+    Ember.set(this.get('model'), this.get('attr'), value);
+    this.sendAction('onchange', this.get('model'), this.get('attr'), value);
   },
 
   actions: {
+
+    serialize() {
+      this.serialize();
+    },
 
     addVideo() {
       this.get('videos').pushObject({url: ""});

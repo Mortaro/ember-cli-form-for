@@ -1,10 +1,12 @@
 <div class="form-group">
-  <label>
-    {{label}}
-    {{#if required}}
-      <abbr>*</abbr>
-    {{/if}}
-  </label>
+  {{#if label}}
+    <label>
+      {{label}}
+      {{#if required}}
+        <abbr>*</abbr>
+      {{/if}}
+    </label>
+  {{/if}}
   <div class="form-control p-0 {{if error 'is-invalid'}}">
     {{#power-select-with-create
       options=options

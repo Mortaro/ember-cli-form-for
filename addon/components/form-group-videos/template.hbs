@@ -8,7 +8,7 @@
   {{#each videos as |video|}}
     <div class="row">
       <div class="col-md-12">
-        {{input value=video.url class="form-control" placeholder="Url do Vídeo"}}
+        {{input value=video.value class="form-control" focus-out=(action 'serialize') placeholder="Url do Vídeo" disabled=disabled}}
       </div>
     </div>
     {{#if (gte videos.length 2)}}
@@ -21,6 +21,6 @@
     </div>
   {{/if}}
   <div class="col-md-12">
-    <button {{action 'addVideo'}} class="btn btn-link"> Adicionar Telefone </button>
+    <button {{action 'addVideo'}} class="btn btn-link"> Adicionar Vídeo </button>
   </div>
 </div>
