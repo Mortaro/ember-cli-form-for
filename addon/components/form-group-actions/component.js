@@ -7,6 +7,14 @@ export default Ember.Component.extend({
 
   classNames: ['col-md-12'],
 
-  label: 'Salvar'
+  label: 'Salvar',
+
+  actions: {
+
+    submit() {
+      this.sendAction('submit', this.get('model'));
+    }
+
+  }
 
 });
