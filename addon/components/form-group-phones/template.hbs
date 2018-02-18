@@ -8,7 +8,14 @@
   {{#each phones as |phone|}}
     <div class="row">
       <div class="col-md-{{if whatsapp '9' '12'}}">
-        {{input type="tel" value=phone.number focus-out=(action 'serialize') class="form-control" key-up=(action 'changeMask')}}
+        <div class="input-group">
+          {{input type="tel" value=phone.number focus-out=(action 'serialize') class="form-control" key-up=(action 'changeMask')}}
+          {{#if (gte phones.length 2)}}
+            <span class="input-group-btn">
+              <button class="btn btn-outline-secondary" {{action 'destroyPhone' phone}}>x</button>
+            </span>
+          {{/if}}
+        </div>
       </div>
       {{#if whatsapp}}
         <div class="col-md-3">
@@ -22,16 +29,12 @@
         </div>
       {{/if}}
     </div>
-    {{#if (gte phones.length 2)}}
-      <button class="btn btn-outline-danger" {{action 'destroyPhone' phone}}>Excluir</button>
-    {{/if}}
   {{/each}}
   {{#if error}}
     <div class="invalid-feedback">
       {{error}}
     </div>
   {{/if}}
-  <div class="col-md-12">
-    <button {{action 'addPhone'}} class="btn btn-link"> Adicionar Telefone </button>
-  </div>
+  <div class="col-md-12"></div>
+  <button {{action 'addPhone'}} class="btn btn-link"> Adicionar Telefone </button>
 </div>

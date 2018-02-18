@@ -5,51 +5,54 @@
       <abbr>*</abbr>
     {{/if}}
   </label>
-  <div class="col-md-12">
-    {{input value=(get (get model attr) "cep") class="form-control" focus-out="completeAddress" placeholder="CEP"}}
-  </div>
-  <div class="col-md-5">
-    {{input value=(get (get model attr) "street") class="form-control" placeholder="Endereço"}}
-  </div>
-  <div class="col-md-2">
-    {{input value=(get (get model attr) "number") class="form-control number" placeholder="Número"}}
-  </div>
-  <div class="col-md-2">
-    {{input value=(get (get model attr) "complement") class="form-control" placeholder="Complemento"}}
-  </div>
-  <div class="col-md-6">
-    {{input value=(get (get model attr) "neighborhood") class="form-control" placeholder="Bairro"}}
-  </div>
-  <div class="col-md-3">
-    <select onchange={{action 'setUf' value="target.value"}} class="form-control">
-      <option>Escolha um Estado</option>
-      {{#each states as |s|}}
-        <option value={{s.sigla}} selected={{eq s.sigla (get (get model attr) "uf")}}>{{s.nome}}</option>
-      {{/each}}
-    </select>
-  </div>
-  <div class="col-md-3">
-    <select onchange={{action 'setCity' value="target.value"}} class="form-control">
-      {{#each states as |s|}}
-        {{#if (eq s.sigla (get (get model attr) "uf"))}}
-          {{#each s.cidades as |c|}}
-            <option value={{c}} selected={{eq c (get (get model attr) "city")}}>{{c}}</option>
-          {{/each}}
-        {{/if}}
-      {{/each}}
-    </select>
-  </div>
-  {{#if latlong}}
-    <div class="col-md-12">
-      {{input value=(get (get model attr) "latitude") class="form-control" placeholder="Latitude"}}
+  <div class="row">
+    <div class="col-md-3">
+      {{input value=(get (get model attr) "cep") class="form-control" focus-out="completeAddress" placeholder="CEP"}}
     </div>
-    <div class="col-md-12">
-      {{input value=(get (get model attr) "longitude") class="form-control" placeholder="Longitude"}}
+    <div class="col-md-2">
+      {{input value=(get (get model attr) "number") class="form-control number" placeholder="Número"}}
     </div>
-  {{/if}}
-  {{#if error}}
-    <div class="invalid-feedback">
-      {{error}}
+    <div class="col-md-2">
+      {{input value=(get (get model attr) "complement") class="form-control" placeholder="Complemento"}}
     </div>
-  {{/if}}
+    <div class="col-md-5">
+      {{input value=(get (get model attr) "street") class="form-control" placeholder="Endereço"}}
+    </div>
+    <div class="col-md-12 mb-3"></div>
+    <div class="col-md-6">
+      {{input value=(get (get model attr) "neighborhood") class="form-control" placeholder="Bairro"}}
+    </div>
+    <div class="col-md-3">
+      <select onchange={{action 'setUf' value="target.value"}} class="form-control">
+        <option>Escolha um Estado</option>
+        {{#each states as |s|}}
+          <option value={{s.sigla}} selected={{eq s.sigla (get (get model attr) "uf")}}>{{s.nome}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="col-md-3">
+      <select onchange={{action 'setCity' value="target.value"}} class="form-control">
+        {{#each states as |s|}}
+          {{#if (eq s.sigla (get (get model attr) "uf"))}}
+            {{#each s.cidades as |c|}}
+              <option value={{c}} selected={{eq c (get (get model attr) "city")}}>{{c}}</option>
+            {{/each}}
+          {{/if}}
+        {{/each}}
+      </select>
+    </div>
+    {{#if latlong}}
+      <div class="col-md-12">
+        {{input value=(get (get model attr) "latitude") class="form-control" placeholder="Latitude"}}
+      </div>
+      <div class="col-md-12">
+        {{input value=(get (get model attr) "longitude") class="form-control" placeholder="Longitude"}}
+      </div>
+    {{/if}}
+    {{#if error}}
+      <div class="invalid-feedback">
+        {{error}}
+      </div>
+    {{/if}}
+  </div>
 </div>
