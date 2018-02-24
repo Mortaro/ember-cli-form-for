@@ -5,24 +5,28 @@
       <abbr>*</abbr>
     {{/if}}
   </label>
-  {{#each texts as |text|}}
-    <div class="row">
-      <div class="col-md-12">
-        {{input value=text.value class="form-control" focus-out=(action 'serialize') disabled=disabled}}
+  <div class="input-group">
+    {{#if prependText}}
+      <div class="input-group-prepend">
+        <span class="input-group-text rounded-0">{{prependText}}</span>
       </div>
-    </div>
-    {{#if (gte texts.length 2)}}
-      <button class="btn btn-outline-danger" {{action 'destroyText' text}}>Excluir</button>
     {{/if}}
-  {{/each}}
+    {{input
+      value=(get model attr)
+      class=(concat "form-control " (if error 'is-invalid'))
+      focus-out=onchange
+      disabled=disabled
+      placeholder=(if placeholder placeholder mask)
+    }}
+    {{#if appendText}}
+      <div class="input-group-append">
+        <span class="input-group-text rounded-0">{{appendText}}</span>
+      </div>
+    {{/if}}
+  </div>
   {{#if error}}
     <div class="invalid-feedback">
       {{error}}
-    </div>
-  {{/if}}
-  {{#if (or (not limit) (lt texts.length limit))}}
-    <div class="col-md-12">
-      <button {{action 'addText'}} class="btn btn-link"> Adicionar </button>
     </div>
   {{/if}}
 </div>
