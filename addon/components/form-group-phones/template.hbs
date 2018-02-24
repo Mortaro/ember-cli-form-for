@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-md-{{if whatsapp '9' '12'}}">
         <div class="input-group">
-          {{input type="tel" value=phone.number focus-out=(action 'serialize') class="form-control" key-up=(action 'changeMask')}}
+          {{input type="tel" value=phone.number focus-out=(action 'serialize') class="form-control" key-up=(action 'changeMask') focus-out=(action 'onchange')}}
           {{#if (gte phones.length 2)}}
             <span class="input-group-btn">
               <button class="btn btn-outline-secondary" {{action 'destroyPhone' phone}}>x</button>

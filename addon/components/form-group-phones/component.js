@@ -38,8 +38,8 @@ export default Ember.Component.extend({
 
   serialize() {
     let value = this.get('phones');
-    console.log(value);
     Ember.set(this.get('model'), this.get('attr'), value);
+    this.send('onchange');
     this.sendAction('onchange', this.get('model'), this.get('attr'), value);
   },
 
@@ -74,7 +74,14 @@ export default Ember.Component.extend({
           VMasker($(this)).maskPattern('(99) 9999-9999');
         }
       })
+      this.sendAction('onchange');
     },
+
+    onchange() {
+      let phones = Ember.get(this.get('model'), this.get('attr'));
+      Ember.set(this.get('model'), this.get('attr'), Object.assign([], phones));
+      this.sendAction('onchange');
+    }
 
   }
 

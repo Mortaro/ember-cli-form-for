@@ -7,20 +7,20 @@
   </label>
   <div class="row">
     <div class="col-md-3">
-      {{input value=(get (get model attr) "cep") class="form-control" focus-out="completeAddress" placeholder="CEP"}}
+      {{input value=(get (get model attr) "cep") class="form-control" focus-out="completeAddress" placeholder="CEP" focus-out=(action 'onchange')}}
     </div>
     <div class="col-md-2">
-      {{input value=(get (get model attr) "number") class="form-control number" placeholder="Número"}}
+      {{input value=(get (get model attr) "number") class="form-control number" placeholder="Número" focus-out=(action 'onchange')}}
     </div>
     <div class="col-md-2">
-      {{input value=(get (get model attr) "complement") class="form-control" placeholder="Complemento"}}
+      {{input value=(get (get model attr) "complement") class="form-control" placeholder="Complemento" focus-out=(action 'onchange')}}
     </div>
     <div class="col-md-5">
-      {{input value=(get (get model attr) "street") class="form-control" placeholder="Endereço"}}
+      {{input value=(get (get model attr) "street") class="form-control" placeholder="Endereço" focus-out=(action 'onchange')}}
     </div>
     <div class="col-md-12 mb-3"></div>
     <div class="col-md-6">
-      {{input value=(get (get model attr) "neighborhood") class="form-control" placeholder="Bairro"}}
+      {{input value=(get (get model attr) "neighborhood") class="form-control" placeholder="Bairro" focus-out=(action 'onchange')}}
     </div>
     <div class="col-md-3">
       <select onchange={{action 'setUf' value="target.value"}} class="form-control">

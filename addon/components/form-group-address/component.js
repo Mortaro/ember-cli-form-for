@@ -46,6 +46,7 @@ export default Ember.Component.extend({
             Ember.set(address, 'neighborhood', dados.bairro);
             Ember.set(address, 'city', dados.localidade);
             Ember.set(address, 'uf', dados.uf);
+            this.send('onchange');
           }
         });
       }
@@ -57,6 +58,12 @@ export default Ember.Component.extend({
 
     setCity(city) {
       this.set('city', city);
+    },
+
+    onchange() {
+      let address = Ember.get(this.get('model'), this.get('attr'));
+      Ember.set(this.get('model'), this.get('attr'), Object.assign({}, address));
+      this.sendAction('onchange');
     }
 
   }
