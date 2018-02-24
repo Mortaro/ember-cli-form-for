@@ -13,7 +13,7 @@
       search=(action "search")
       allowClear=false
       loadingMessage="Buscando..."
-      disabled=disabled
+      disabled=(or disabled (eq options.length 0))
       placeholder=label
       searchPlaceholder="Digite para buscar"
       noMatchesMessage="Nenhum resultado encontrado"
