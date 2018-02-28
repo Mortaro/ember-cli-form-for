@@ -7,7 +7,7 @@
   </label>
   <div class="row">
     <div class="col-md-3">
-      {{input value=(get (get model attr) "cep") class="form-control" focus-out="completeAddress" placeholder="CEP" focus-out=(action 'onchange')}}
+      {{input value=(get (get model attr) "cep") class="form-control" placeholder="CEP" focus-out=(action 'completeAddress')}}
     </div>
     <div class="col-md-2">
       {{input value=(get (get model attr) "number") class="form-control number" placeholder="Número" focus-out=(action 'onchange')}}
