@@ -49,9 +49,9 @@ export default Ember.Component.extend({
       this.set('error', message);
     });
     VMasker(this.$().find("input")).maskMoney();
-    this.$().find("input").focus(function() {
+    /*this.$().find("input").focus(function() {
       $(this).select();
-    });
+    });*/
   }
 
 });
