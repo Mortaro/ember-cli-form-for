@@ -1,10 +1,12 @@
 <div class="form-group">
-  <label>
-    {{label}}
-    {{#if required}}
-      <abbr>*</abbr>
-    {{/if}}
-  </label>
+  {{#if label}}
+    <label>
+      {{label}}
+      {{#if required}}
+        <abbr>*</abbr>
+      {{/if}}
+    </label>
+  {{/if}}
   {{input
     type="password"
     value=(get model attr)
