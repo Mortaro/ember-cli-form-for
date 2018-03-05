@@ -6,47 +6,58 @@
     {{/if}}
   </label>
   <div class="row">
-    <div class="col-md-3">
-      {{input value=(get (get model attr) "cep") class="form-control" placeholder="CEP" focus-out=(action 'completeAddress')}}
+    <div class="col-12 mb-3">
+      <div class="row">
+        <div class="col-6 col-lg-4 col-xl-3">
+          {{input value=(get (get model attr) "cep") class="form-control" placeholder="CEP" focus-out=(action 'completeAddress') disabled=disabled}}
+        </div>
+        <div class="col-6 col-lg-4 col-xl-2">
+          {{input value=(get (get model attr) "number") class="form-control number" placeholder="Número" focus-out=(action 'onchange') disabled=disabled}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mt-3 mt-lg-0">
+          {{input value=(get (get model attr) "complement") class="form-control" placeholder="Complemento" focus-out=(action 'onchange') disabled=disabled}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-12 col-xl-4 mt-3 mt-xl-0">
+          {{input value=(get (get model attr) "street") class="form-control" placeholder="Endereço" focus-out=(action 'onchange') disabled=disabled}}
+        </div>
+      </div>
     </div>
-    <div class="col-md-2">
-      {{input value=(get (get model attr) "number") class="form-control number" placeholder="Número" focus-out=(action 'onchange')}}
-    </div>
-    <div class="col-md-2">
-      {{input value=(get (get model attr) "complement") class="form-control" placeholder="Complemento" focus-out=(action 'onchange')}}
-    </div>
-    <div class="col-md-5">
-      {{input value=(get (get model attr) "street") class="form-control" placeholder="Endereço" focus-out=(action 'onchange')}}
-    </div>
-    <div class="col-md-12 mb-3"></div>
-    <div class="col-md-6">
-      {{input value=(get (get model attr) "neighborhood") class="form-control" placeholder="Bairro" focus-out=(action 'onchange')}}
-    </div>
-    <div class="col-md-3">
-      <select onchange={{action 'setUf' value="target.value"}} class="form-control">
-        <option>Escolha um Estado</option>
-        {{#each states as |s|}}
-          <option value={{s.sigla}} selected={{eq s.sigla (get (get model attr) "uf")}}>{{s.nome}}</option>
-        {{/each}}
-      </select>
-    </div>
-    <div class="col-md-3">
-      <select onchange={{action 'setCity' value="target.value"}} class="form-control">
-        {{#each states as |s|}}
-          {{#if (eq s.sigla (get (get model attr) "uf"))}}
-            {{#each s.cidades as |c|}}
-              <option value={{c}} selected={{eq c (get (get model attr) "city")}}>{{c}}</option>
+    <div class="col-12 mb-3">
+      <div class="row">
+        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
+          {{input value=(get (get model attr) "neighborhood") class="form-control" placeholder="Bairro" focus-out=(action 'onchange') disabled=disabled}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 mb-3 mb-sm-0">
+          <select onchange={{action 'setUf' value="target.value"}} class="form-control" disabled={{if disabled 'disabled' ''}}>
+            <option>Escolha um Estado</option>
+            {{#each states as |s|}}
+              <option value={{s.sigla}} selected={{eq s.sigla (get (get model attr) "uf")}}>{{s.nome}}</option>
             {{/each}}
-          {{/if}}
-        {{/each}}
-      </select>
+          </select>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <select onchange={{action 'setCity' value="target.value"}} class="form-control" disabled={{if disabled 'disabled' ''}}>
+            {{#each states as |s|}}
+              {{#if (eq s.sigla (get (get model attr) "uf"))}}
+                {{#each s.cidades as |c|}}
+                  <option value={{c}} selected={{eq c (get (get model attr) "city")}}>{{c}}</option>
+                {{/each}}
+              {{/if}}
+            {{/each}}
+          </select>
+        </div>
+      </div>
     </div>
     {{#if latlong}}
-      <div class="col-md-12">
-        {{input value=(get (get model attr) "latitude") class="form-control" placeholder="Latitude"}}
-      </div>
-      <div class="col-md-12">
-        {{input value=(get (get model attr) "longitude") class="form-control" placeholder="Longitude"}}
+      <div class="col-12">
+        <div class="row">
+          <div class="col-6">
+            {{input value=(get (get model attr) "latitude") class="form-control" placeholder="Latitude" disabled=disabled}}
+          </div>
+          <div class="col-6">
+            {{input value=(get (get model attr) "longitude") class="form-control" placeholder="Longitude" disabled=disabled}}
+          </div>
+        </div>
       </div>
     {{/if}}
     {{#if error}}

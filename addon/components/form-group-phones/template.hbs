@@ -6,25 +6,26 @@
     {{/if}}
   </label>
   {{#each phones as |phone|}}
-    <div class="row">
-      <div class="col-md-{{if whatsapp '9' '12'}}">
+    <div class="row mb-3">
+      <div class="col-12 col-sm-{{if whatsapp '8' '12'}} col-lg-{{if whatsapp '9' '12'}} col-xl-{{if whatsapp '10' '12'}}">
         <div class="input-group">
-          {{input type="tel" value=phone.number focus-out=(action 'serialize') class="form-control" key-up=(action 'changeMask') focus-out=(action 'onchange')}}
+          {{input type="tel" value=phone.number focus-out=(action 'serialize') class="form-control" key-up=(action 'changeMask') focus-out=(action 'onchange') disabled=disabled}}
           {{#if (gte phones.length 2)}}
             <span class="input-group-btn">
-              <button class="btn btn-outline-secondary" {{action 'destroyPhone' phone}}>x</button>
+              <button class="btn btn-outline-secondary" {{action 'destroyPhone' phone}} disabled={{if disabled 'disabled' ''}}>x</button>
             </span>
           {{/if}}
         </div>
       </div>
       {{#if whatsapp}}
-        <div class="col-md-3">
+        <div class="col-12 col-sm-4 col-lg-3 col-xl-2 d-flex align-items-center">
           {{form-group-toggle
-            class="pl-0"
+            class="p-0 d-flex justify-content-start justify-content-sm-end"
             model=phone
             attr="whatsapp"
             label="WhatsApp?"
             onchange=(action 'serialize')
+            disabled=disabled
           }}
         </div>
       {{/if}}
@@ -35,6 +36,6 @@
       {{error}}
     </div>
   {{/if}}
-  <div class="col-md-12"></div>
-  <button {{action 'addPhone'}} class="btn btn-link"> Adicionar Telefone </button>
+  <div class="col-12"></div>
+  <button {{action 'addPhone'}} class="btn btn-link" disabled={{if disabled 'disabled' ''}}> Adicionar Telefone </button>
 </div>
