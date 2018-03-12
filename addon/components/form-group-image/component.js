@@ -84,6 +84,7 @@ export default Ember.Component.extend({
         uploadedUrl = decodeURIComponent(uploadedUrl);
         this.set('uploadQueue', this.get('uploadQueue') - 1);
         Ember.set(this.get('model'), this.get('attr'), uploadedUrl);
+        this.sendAction('onchange', this.get('model'), this.get('attr'), uploadedUrl);
       });
 
       uploader.on('progress', e => {
