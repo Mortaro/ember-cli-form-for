@@ -11,7 +11,7 @@
     {{#power-select-with-create
       options=options
       search=(action "search")
-      allowClear=false
+      allowClear=allowClear
       loadingMessage="Buscando..."
       disabled=(or disabled (eq options.length 0))
       placeholder=label
