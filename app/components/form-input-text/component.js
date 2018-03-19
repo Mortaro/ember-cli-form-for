@@ -1,0 +1,1 @@
+export { default } from 'form-for/components/form-input-text/component';

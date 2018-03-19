@@ -1,0 +1,7 @@
+{{input
+  value=(if locale (get model (concat attr '.' locale)) (get model attr))
+  class=(concat "form-control " (if error 'is-invalid'))
+  focus-out=(action 'onchange')
+  disabled=disabled
+  placeholder=(if placeholder placeholder mask)
+}}
