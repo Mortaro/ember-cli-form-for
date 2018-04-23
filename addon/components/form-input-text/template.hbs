@@ -1,23 +1,7 @@
-<div class="form-group">
-  {{#if label}}
-    <label>
-      {{label}}
-      {{#if required}}
-        <abbr>*</abbr>
-      {{/if}}
-    </label>
-  {{/if}}
-  <input
-    value={{if locale (get model (concat attr '.' locale)) (get model attr)}}
-    class={{concat "form-control " (if error 'is-invalid')}}
-    onblur={{action 'onchange' value="target.value"}}
-    data-checkout={{get data 'checkout'}}
-    disabled={{if disabled 'disabled'}}
-    placeholder={{if placeholder placeholder mask}}
-  />
-  {{#if error}}
-    <div class="invalid-feedback">
-      {{error}}
-    </div>
-  {{/if}}
-</div>
+{{input
+  value=(if locale (get model (concat attr '.' locale)) (get model attr))
+  class=(concat "form-control " (if error 'is-invalid'))
+  focus-out=(action 'onchange')
+  disabled=disabled
+  placeholder=(if placeholder placeholder mask)
+}}

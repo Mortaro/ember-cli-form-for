@@ -5,7 +5,7 @@ export default Ember.Component.extend({
 
   layout,
 
-  classNameBindings: ['gridClass'],
+  tagName: '',
 
   columns: 12,
 
