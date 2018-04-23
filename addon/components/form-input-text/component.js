@@ -5,11 +5,15 @@ export default Ember.Component.extend({
 
   layout,
 
-  tagName: '',
+  classNameBindings: ['gridClass'],
 
   columns: 12,
 
   required: false,
+
+  gridClass: Ember.computed('columns', function() {
+    return `col-md-${this.get('columns')}`;
+  }),
 
   init() {
     this._super(...arguments);
