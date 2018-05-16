@@ -14,7 +14,7 @@
     data-checkout={{get data 'checkout'}}
     disabled={{if disabled 'disabled'}}
     placeholder={{if placeholder placeholder mask}}
-    style={{if style (get model attr)}}
+    style={{if background 'background-color: (get model attr)'}}
   />
   {{#if error}}
     <div class="invalid-feedback">
