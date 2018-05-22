@@ -7,7 +7,7 @@
       {{/if}}
     </label>
   {{/if}}
-  {{#debounced-value val=(if locale (get model (concat attr '.' locale)) (get model attr)) wait=500 immediate=false sync=true as |value|}}
+  {{#debounced-value val=(if locale (get model (concat attr '.' locale)) (get model attr)) wait=5000 immediate=false sync=true as |value|}}
     <input
       value=value
       class={{concat "form-control " (if error 'is-invalid')}}
