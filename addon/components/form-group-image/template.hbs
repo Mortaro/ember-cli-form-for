@@ -4,6 +4,12 @@
     {{#if required}}
       <abbr>*</abbr>
     {{/if}}
+    {{#if help}}
+      <abbr class="tip">
+        ?
+        <p class="m-0 pl-1 pr-1">{{help}}</p>
+      </abbr>
+    {{/if}}
   </label>
   {{#unless disabled}}
     <div class="custom-file">
@@ -33,3 +39,23 @@
     </div>
   {{/if}}
 </div>
+
+<style>
+  .tip {
+    cursor: pointer;
+  }
+
+  .tip p {
+    position: absolute;
+    top: -15px;
+    display: none;
+    color: #fff !important;
+    background-color: #000;
+    border: 1px solid #000;
+    border-radius: 5px;
+  }
+
+  .tip:hover p {
+    display: block;
+  }
+</style>
