@@ -17,6 +17,7 @@
     value={{if locale (get model (concat attr '.' locale)) (get model attr)}}
     class={{concat "form-control " (if error 'is-invalid')}}
     onkeyup={{action 'onchange' value="target.value"}}
+    onblur={{action 'onchange' value="target.value"}}
     data-checkout={{get data 'checkout'}}
     disabled={{if disabled 'disabled'}}
     placeholder={{if placeholder placeholder mask}}
