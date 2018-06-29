@@ -4,6 +4,12 @@
     {{#if required}}
       <abbr>*</abbr>
     {{/if}}
+    {{#if help}}
+      <abbr class="tip">
+        ?
+        <p class="m-0 pl-1 pr-1">{{help}}</p>
+      </abbr>
+    {{/if}}
   </label>
   {{textarea
     value=(get model attr)

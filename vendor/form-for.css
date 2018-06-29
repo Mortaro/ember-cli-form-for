@@ -58,3 +58,22 @@
 .form-for .note-editor.note-frame {
   border: none;
 }
+
+.form-for .tip {
+  cursor: pointer;
+}
+
+.form-for .tip p {
+  position: absolute;
+  top: -15px;
+  display: none;
+  color: #fff !important;
+  background-color: #000;
+  border: 1px solid #000;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.form-for .tip:hover p {
+  display: block;
+}
